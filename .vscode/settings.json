@@ -1,0 +1,22 @@
+{
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "java.home": "G:\\Eclipse\\jdk-15",
+    "maven.terminal.customEnv": [
+        {
+            "environmentVariable": "MAVEN_OPTS",               // variable name
+            "value": "-Xms1024m -Xmx4096m"                     // value
+        },
+        {
+            "environmentVariable": "JAVA_HOME",                // variable name
+            "value": "G:\\Eclipse\\jdk-15"      // value
+        }
+    ],
+    "java.configuration.updateBuildConfiguration": "automatic",
+    
+   
+}
