@@ -1,6 +1,8 @@
 package model.DB;
 
+public interface IConnection{
 
-public interface IConnection {
-    Object getInstance();    
+    void connect();
+
+    void close();
 }
