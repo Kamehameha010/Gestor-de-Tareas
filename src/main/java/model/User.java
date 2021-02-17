@@ -3,6 +3,7 @@ package model;
 public class User extends Identity{
 
     private String name;
+    private String lastname;
     private String username;
     private String password;
 
@@ -22,12 +23,19 @@ public class User extends Identity{
     public String getName() {
         return this.name;
     }
+    public void setLastName(String lastname) {
+        this.lastname = lastname;
+    }
 
-    public void setusername(String username) {
+    public String getLastName() {
+        return this.lastname;
+    }
+
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getusername() {
+    public String getUsername() {
         return this.username;
     }
 
@@ -39,4 +47,9 @@ public class User extends Identity{
         return this.password;
     }
 
+    @Override
+    public String toString(){
+        return String.format("User: { id: %d, name: %s, lastname: %s, username: %s, password:%s}", 
+        getId(), getName(), getLastName(), getUsername(), getPassword());
+    }
 }

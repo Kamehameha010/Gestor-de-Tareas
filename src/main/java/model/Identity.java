@@ -2,9 +2,12 @@ package model;
 
 public abstract class Identity {
 
-    private Long _id;
+    private int _id;
 
-    public Long getId(){
+    public int getId(){
         return this._id;
+    }
+    public void setId(int id){
+        this._id = id;
     }
 }
