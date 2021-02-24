@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DB.IConnection;
-import Services.ICrudServices;
 import model.Task;
+import services.ICrudServices;
 
 public class TaskMysql implements ICrudServices<Task, Task> {
 

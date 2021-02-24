@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DB.IConnection;
-import Services.ICrudServices;
 import model.User;
+import services.ICrudServices;
 
 public class UserMysql implements ICrudServices<User, User> {
 
