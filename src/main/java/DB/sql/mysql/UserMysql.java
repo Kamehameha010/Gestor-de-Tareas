@@ -17,7 +17,7 @@ public class UserMysql implements ICrudServices<User, User> {
         mysql = new ConnectionMysql();
     }
 
-    private final String INSERT = "INSERT INTO USERS VALUES(null,?,?,?,?)";
+    private final String INSERT = "INSERT INTO USERS(name, lastname, username, password) VALUES(?,?,?,?)";
     private final String UPDATE = "UPDATE FROM USERS SET name=?, lastname=?, username=?,password=? WHERE id_user=?";
     private final String DELETE = "DELETE FROM USERS WHERE id_user=?";
     private final String FIND_BY_ID = "SELECT * FROM USERS WHERE id_user=?";
@@ -34,11 +34,10 @@ public class UserMysql implements ICrudServices<User, User> {
         stmp.setString(4, obj.getPassword());
         try {
             stmp.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
         } finally {
             conn.close();
         }
+
     }
 
     @Override
@@ -79,7 +78,6 @@ public class UserMysql implements ICrudServices<User, User> {
         var stmp = conn.prepareStatement(FIND_BY_ID);
         stmp.setInt(1, id);
         User user = new User();
-        ;
         try {
             var rs = stmp.executeQuery();
 

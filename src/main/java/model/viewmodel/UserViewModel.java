@@ -1,9 +1,5 @@
 package model.viewmodel;
 
-import java.security.NoSuchAlgorithmException;
-
-import services.security.EncryptService;
-
 public class UserViewModel {
 
     private String username;
@@ -26,11 +22,7 @@ public class UserViewModel {
     }
 
     public void setPassword(String password) {
-        try {
-            this.password = EncryptService.Encrypt(password);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+        this.password = password;
     }
 
     public String getPassword() {

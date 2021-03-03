@@ -1,6 +1,10 @@
 package model;
 
-public class User extends Identity{
+import java.security.NoSuchAlgorithmException;
+
+import services.security.EncryptService;
+
+public class User extends Identity {
 
     private String name;
     private String lastname;
@@ -10,8 +14,9 @@ public class User extends Identity{
     public User() {
     }
 
-    public User(String name, String username, String password) {
+    public User(String name, String username, String lastname, String password) {
         this.name = name;
+        this.lastname = lastname;
         this.username = username;
         this.password = password;
     }
@@ -23,6 +28,7 @@ public class User extends Identity{
     public String getName() {
         return this.name;
     }
+
     public void setLastName(String lastname) {
         this.lastname = lastname;
     }
@@ -32,7 +38,9 @@ public class User extends Identity{
     }
 
     public void setUsername(String username) {
+
         this.username = username;
+
     }
 
     public String getUsername() {
@@ -40,7 +48,12 @@ public class User extends Identity{
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        try {
+            this.password = EncryptService.Encrypt(password);
+        } catch (NoSuchAlgorithmException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public String getPassword() {
@@ -48,8 +61,8 @@ public class User extends Identity{
     }
 
     @Override
-    public String toString(){
-        return String.format("User: { id: %d, name: %s, lastname: %s, username: %s, password:%s}", 
-        getId(), getName(), getLastName(), getUsername(), getPassword());
+    public String toString() {
+        return String.format("User: { id: %d, name: %s, lastname: %s, username: %s, password:%s}", getId(), getName(),
+                getLastName(), getUsername(), getPassword());
     }
 }

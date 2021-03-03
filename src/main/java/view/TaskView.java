@@ -1,29 +1,19 @@
 package view;
 
+import java.awt.Color;
 import java.awt.EventQueue;
-
-import javax.swing.JInternalFrame;
-import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
-import javax.swing.JTextField;
-import java.awt.GridBagConstraints;
-import java.awt.GridLayout;
-import net.miginfocom.swing.MigLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.FormSpecs;
-import javax.swing.JButton;
-import javax.swing.JTextArea;
-import javax.swing.JTable;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JList;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import model.TaskStatus;
 
 public class TaskView extends JInternalFrame {
@@ -31,21 +21,6 @@ public class TaskView extends JInternalFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TaskView frame = new TaskView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -54,8 +29,9 @@ public class TaskView extends JInternalFrame {
 		setBounds(100, 100, 510, 420);
 		getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(82, 334, 89, 23);
+		JButton btnNewButton = new JButton("Save");
+		btnNewButton.setBackground(new Color(51, 153, 255));
+		btnNewButton.setBounds(31, 334, 75, 23);
 		getContentPane().add(btnNewButton);
 		
 		textField = new JTextField();
@@ -65,7 +41,7 @@ public class TaskView extends JInternalFrame {
 		
 		JLabel lblNewLabel = new JLabel("Task name:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel.setBounds(31, 62, 89, 29);
+		lblNewLabel.setBounds(31, 61, 89, 29);
 		getContentPane().add(lblNewLabel);
 		
 		textField_1 = new JTextField();
@@ -98,13 +74,18 @@ public class TaskView extends JInternalFrame {
 		comboBox.setBounds(31, 278, 179, 23);
 		getContentPane().add(comboBox);
 		
-		JButton btnNewButton_1 = new JButton("New button");
+		JButton btnNewButton_1 = new JButton("Cancel");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1.setBounds(319, 334, 89, 23);
+		btnNewButton_1.setBounds(135, 334, 75, 23);
 		getContentPane().add(btnNewButton_1);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.BLACK);
+		panel.setBounds(278, 89, 167, 212);
+		getContentPane().add(panel);
 
 	}
 }
