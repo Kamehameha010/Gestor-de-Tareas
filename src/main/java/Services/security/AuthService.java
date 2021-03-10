@@ -19,7 +19,6 @@ public class AuthService implements IAuthService {
 
         var conn = db.connect();
         User user = null;
-        System.out.println(user == null);
         try {
             var stmp = conn.prepareStatement(FIND_USER);
 
@@ -27,15 +26,15 @@ public class AuthService implements IAuthService {
 
             stmp.setString(2, EncryptService.Encrypt(model.getPassword()));
             var result = stmp.executeQuery();
-            user = new User();
-            while (result.next()) {
+            
+            if (result.next()) {
+                user = new User();
                 user.setId(result.getInt(1));
                 user.setName(result.getString(2));
-                System.out.println("fdff "+result.getString(2));
                 user.setLastName(result.getString(3));
                 user.setUsername(result.getString(4));
             }
-            System.out.println(user);
+
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (Exception e) {

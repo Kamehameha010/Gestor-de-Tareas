@@ -3,7 +3,6 @@ package view;
 import java.awt.Font;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,6 +14,11 @@ import model.User;
 
 public class ProfileView extends JInternalFrame {
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private JPanel contentPane;
 	private JTextField txtName;
 	private JTextField txtLastName;
@@ -31,7 +35,7 @@ public class ProfileView extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public void initComponents() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		setBounds(100, 100, 472, 360);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -1,4 +1,4 @@
-package view.FieldValidation;
+package view.fieldValidation;
 
 import javax.swing.InputVerifier;
 import javax.swing.JComponent;

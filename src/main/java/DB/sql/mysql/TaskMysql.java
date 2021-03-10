@@ -31,7 +31,7 @@ public class TaskMysql implements ICrudServices<Task, Task> {
         stmp.setString(1, obj.getTaskName());
         stmp.setString(2, obj.getTaskDescription());
         stmp.setLong(3, obj.getTaskDate());
-        stmp.setBoolean(4, obj.getTaskIsCompleted());
+        stmp.setInt(4, obj.getTaskIsCompleted().getValue());
         stmp.setInt(5, obj.getIdUser());
         try {
             stmp.executeUpdate();
@@ -49,7 +49,7 @@ public class TaskMysql implements ICrudServices<Task, Task> {
         stmp.setString(1, obj.getTaskName());
         stmp.setString(2, obj.getTaskDescription());
         stmp.setLong(3, obj.getTaskDate());
-        stmp.setBoolean(4, obj.getTaskIsCompleted());
+        stmp.setInt(4, obj.getTaskIsCompleted().getValue());
         stmp.setInt(5, obj.getIdUser());
         stmp.setInt(6, obj.getId());
         try {
@@ -89,7 +89,7 @@ public class TaskMysql implements ICrudServices<Task, Task> {
                 task.setTaskName(rs.getString(2));
                 task.setTaskDescription(rs.getString(3));
                 task.setTaskDate(rs.getLong(4));
-                task.setTaskIsCompleted(rs.getBoolean(5));
+                task.setTaskIsCompleted(rs.getInt(5));
                 task.setIdUser(rs.getInt(6));
             }
         } catch (SQLException e) {
@@ -116,7 +116,7 @@ public class TaskMysql implements ICrudServices<Task, Task> {
                 task.setTaskName(rs.getString(2));
                 task.setTaskDescription(rs.getString(3));
                 task.setTaskDate(rs.getLong(4));
-                task.setTaskIsCompleted(rs.getBoolean(5));
+                task.setTaskIsCompleted(rs.getInt(5));
                 task.setIdUser(rs.getInt(6));
             }
 

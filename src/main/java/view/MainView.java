@@ -3,6 +3,8 @@ package view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
@@ -12,10 +14,17 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import model.Actions;
 import model.User;
 
 public class MainView extends JFrame {
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
+	
 	private JPanel contentPane;
 	private User _user;
 
@@ -24,19 +33,36 @@ public class MainView extends JFrame {
 	 */
 
 	public MainView() {
-
+		initComponents();
 	}
 
 	public MainView(User user) {
-		_user = user;
+
+		_user = user;;
 		initComponents();
 	}
 
 	public void initComponents() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 683, 435);
 
-		
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent windowEvent) {
+				LoginView sign = new LoginView(null);
+				sign.setVisible(true);
+			}
+		});
+
+		setBounds(100, 100, 783, 600);
+		setResizable(false);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+
+		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(Color.YELLOW);
+		desktopPane.setBounds(0, 0, 783, 600);
+		contentPane.add(desktopPane);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -54,40 +80,41 @@ public class MainView extends JFrame {
 		mnNewMenu_1.add(mntmNewMenuItem);
 
 		JMenu menuItemExit = new JMenu("Exit");
-		
+
 		mnNewMenu.add(menuItemExit);
 
 		JMenu mnNewMenu_2 = new JMenu("Module");
 		menuBar.add(mnNewMenu_2);
 
 		JMenuItem menuItemTask = new JMenuItem("Task");
+		menuItemTask.addActionListener(new ActionListener() {
+			// pending
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				var task = new TaskView(_user.getId(), Actions.INSERT);
+				desktopPane.add(task);
+				task.show();
+			}
+		});
 		mnNewMenu_2.add(menuItemTask);
 
-		JMenuItem menuItemProfile = new JMenuItem("Perfil");
-		
+		JMenuItem menuItemProfile = new JMenuItem("Profile");
+		menuItemProfile.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				var profile = new ProfileView(_user);
+				desktopPane.add(profile);
+				profile.show();
+				profile.setIconifiable(true);
+			}
+
+		});
+
 		mnNewMenu_2.add(menuItemProfile);
 
 		JMenu mnNewMenu_3 = new JMenu("Help");
 		menuBar.add(mnNewMenu_3);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
 
-		JDesktopPane desktopPane = new JDesktopPane();
-		desktopPane.setBackground(Color.YELLOW);
-		desktopPane.setBounds(0, 0, 667, 374);
-		contentPane.add(desktopPane);
-
-		menuItemProfile.addActionListener(new ActionListener(){
-			//pending
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				var winProfile = new LoginView();
-				winProfile.setVisible(true);
-				/* desktopPane.add(winProfile); */
-			}
-			
-		} );
 	}
 }

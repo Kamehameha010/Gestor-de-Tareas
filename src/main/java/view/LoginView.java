@@ -3,8 +3,6 @@ package view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,13 +12,18 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import model.User;
 import model.viewmodel.UserViewModel;
 import services.security.AuthService;
-import view.FieldValidation.InputText;
+import view.fieldValidation.InputText;
 
 public class LoginView extends JFrame {
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
+	
 	private JPanel contentPane;
 	private JTextField txtUser;
 	private JPasswordField txtPasword;
@@ -61,11 +64,13 @@ public class LoginView extends JFrame {
 		txtUser = new JTextField();
 		txtUser.setColumns(10);
 		txtUser.setBounds(85, 79, 243, 30);
+		txtUser.setText("jlop02");
 		txtUser.setInputVerifier(isTextValidity);
 		panel.add(txtUser);
 
 		txtPasword = new JPasswordField();
 		txtPasword.setBounds(85, 143, 243, 30);
+		txtPasword.setText("1234");
 		txtPasword.setInputVerifier(isTextValidity);
 		panel.add(txtPasword);
 
@@ -78,21 +83,21 @@ public class LoginView extends JFrame {
 			public void actionPerformed(ActionEvent evt) {
 
 				var user = new UserViewModel(txtUser.getText().trim(), new String(txtPasword.getPassword()).trim());
-				
-				auth = new AuthService();
-				try {
-					var result = auth.isUserValid(user);
-					
-					if (result != null) {
-						MainView mainWindow = new MainView(result);
-						mainWindow.setVisible(true);
-						dispose();
-					}
-				} catch (Exception e) {
 
-					e.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Verify User or password", "Sign In", JOptionPane.ERROR_MESSAGE);
+				auth = new AuthService();
+
+				var result = auth.isUserValid(user);
+
+				if (result != null) {
+					System.out.println(result);
+					MainView mainWindow = new MainView(result);
+					mainWindow.setVisible(true);
+					dispose();
+				} else {
+					JOptionPane.showMessageDialog(null, "Verify User or password", "Sign In",
+							JOptionPane.ERROR_MESSAGE);
 				}
+
 			}
 		});
 		panel.add(btnSignIn);

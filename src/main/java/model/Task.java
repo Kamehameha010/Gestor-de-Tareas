@@ -4,11 +4,19 @@ public class Task extends Identity {
     private String taskName;
     private String taskDescription;
     private long taskDate;
-    private boolean taskIsCompleted;
+    private TaskStatus taskIsCompleted;
     private int idUser;
 
     public Task() {
 
+    }
+
+    public Task(int user, String name, String description, long date, TaskStatus completed) {
+        idUser = user;
+        taskName = name;
+        taskDescription = description;
+        taskDate = date;
+        taskIsCompleted = completed;
     }
 
     public void setTaskName(String name) {
@@ -35,11 +43,11 @@ public class Task extends Identity {
         return this.taskDate;
     }
 
-    public void setTaskIsCompleted(Boolean isCompleted) {
-        taskIsCompleted = isCompleted;
+    public void setTaskIsCompleted(int isCompleted) {
+        taskIsCompleted = TaskStatus.valueOf(isCompleted);
     }
 
-    public boolean getTaskIsCompleted() {
+    public TaskStatus getTaskIsCompleted() {
         return this.taskIsCompleted;
     }
 
@@ -53,8 +61,8 @@ public class Task extends Identity {
 
     @Override
     public String toString() {
-        return String.format("Task{_id: %d, name:%s, description : %s, date:%s, completed:%s, id_user: %d}", getId(), taskName,
-                taskDescription, taskDate, taskIsCompleted, idUser);
+        return String.format("Task{_id: %d, name:%s, description : %s, date:%s, completed:%s, id_user: %d}", getId(),
+                taskName, taskDescription, taskDate, taskIsCompleted, idUser);
     }
 
 }

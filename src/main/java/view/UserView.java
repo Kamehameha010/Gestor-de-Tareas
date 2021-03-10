@@ -1,10 +1,13 @@
 package view;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -14,16 +17,16 @@ import javax.swing.border.EmptyBorder;
 
 import controller.UserController;
 import model.User;
-import view.FieldValidation.InputText;
+import view.fieldValidation.InputText;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.sql.SQLException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+public class UserView extends JInternalFrame {
 
-public class UserView extends JFrame {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 
+	
 	private JPanel contentPane;
 	private JTextField txtName;
 	private JTextField txtLastName;
@@ -50,14 +53,8 @@ public class UserView extends JFrame {
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 470, 371);
-
-		addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent windowEvent) {
-				LoginView sign = new LoginView(null);
-				sign.setVisible(true);
-			}
-		});
+	
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
