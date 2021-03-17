@@ -19,7 +19,7 @@ import controller.UserController;
 import model.User;
 import view.fieldValidation.InputText;
 
-public class UserView extends JInternalFrame {
+public class UserView extends JFrame {
 
 	/**
 	 *

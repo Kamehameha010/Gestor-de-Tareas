@@ -6,12 +6,14 @@ public class Task extends Identity {
     private long taskDate;
     private TaskStatus taskIsCompleted;
     private int idUser;
+    private int id;
 
     public Task() {
 
     }
 
-    public Task(int user, String name, String description, long date, TaskStatus completed) {
+    public Task(int idTask, int user, String name, String description, long date, TaskStatus completed) {
+        setId(idTask);
         idUser = user;
         taskName = name;
         taskDescription = description;

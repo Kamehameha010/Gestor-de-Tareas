@@ -13,8 +13,7 @@ public class TaskTable extends AbstractTableModel {
      */
     private static final long serialVersionUID = 1L;
 
-
-    private String m_colNames[] = {"Id", "Name", "Description", "Date", "Completed" };
+    private String m_colNames[] = { "Id", "Name", "Description", "Date", "Completed" };
     private List<Task> m_tasks;
 
     public TaskTable(List<Task> tasks) {
@@ -49,8 +48,8 @@ public class TaskTable extends AbstractTableModel {
         return null;
     }
 
-
-    public Task  getRowTask(int row){
+    public Task getRowTask(int row) {
         return m_tasks.get(row);
     }
+
 }

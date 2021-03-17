@@ -91,9 +91,9 @@ public class MainView extends JFrame {
 			// pending
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				var task = new TaskView(_user.getId(), Actions.INSERT);
-				desktopPane.add(task);
-				task.show();
+				var taskList = new TaskListView(_user.getId());
+				desktopPane.add(taskList);
+				taskList.show();
 			}
 		});
 		mnNewMenu_2.add(menuItemTask);

@@ -30,7 +30,7 @@ public class LoginView extends JFrame {
 	private AuthService auth;
 	private InputText isTextValidity;
 
-	private UserView signUp;
+	private UserView signUp = null;
 
 	/**
 	 * Create the frame.
@@ -112,10 +112,10 @@ public class LoginView extends JFrame {
 			public void actionPerformed(ActionEvent evt) {
 
 				if (signUp == null) {
+					
 					signUp = new UserView();
 					signUp.setVisible(true);
 					dispose();
-
 				}
 			}
 		});

@@ -26,8 +26,8 @@ public class UserController {
         _serviceContext.Find(id);
     }
 
-    public List<User> GetAll() throws SQLException {
-        return _serviceContext.GetAll();
+    public List<User> GetAll(int id) throws SQLException {
+        return _serviceContext.GetAll(id);
     }
 
     public User FindById(int id) throws SQLException {

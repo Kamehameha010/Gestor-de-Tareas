@@ -15,6 +15,6 @@ public interface ICrudServices<T extends Identity, U> {
 
     U Find(int id) throws SQLException;
 
-    List<U> GetAll() throws SQLException;
+    List<U> GetAll(int id) throws SQLException;
 
 }

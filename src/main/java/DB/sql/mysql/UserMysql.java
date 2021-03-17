@@ -18,7 +18,7 @@ public class UserMysql implements ICrudServices<User, User> {
     }
 
     private final String INSERT = "INSERT INTO USERS(name, lastname, username, password) VALUES(?,?,?,?)";
-    private final String UPDATE = "UPDATE FROM USERS SET name=?, lastname=?, username=?,password=? WHERE id_user=?";
+    private final String UPDATE = "UPDATE USERS SET name=?, lastname=?, username=?,password=? WHERE id_user=?";
     private final String DELETE = "DELETE FROM USERS WHERE id_user=?";
     private final String FIND_BY_ID = "SELECT * FROM USERS WHERE id_user=?";
     private final String GET_ALL = "SELECT * FROM USERS";
@@ -48,7 +48,7 @@ public class UserMysql implements ICrudServices<User, User> {
         stmp.setString(2, obj.getLastName());
         stmp.setString(3, obj.getUsername());
         stmp.setString(4, obj.getPassword());
-        stmp.setInt(4, obj.getId());
+        stmp.setInt(5, obj.getId());
         try {
             stmp.executeUpdate();
         } catch (SQLException e) {
@@ -96,7 +96,7 @@ public class UserMysql implements ICrudServices<User, User> {
     }
 
     @Override
-    public List<User> GetAll() throws SQLException {
+    public List<User> GetAll(int id) throws SQLException {
 
         ArrayList<User> users = new ArrayList<>();
 

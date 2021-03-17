@@ -30,8 +30,8 @@ public class TaskController  {
         _serviceContext.Find(id);
     }
 
-    public List<Task> GetAll() throws SQLException {
-        return _serviceContext.GetAll();
+    public List<Task> GetAll(int id) throws SQLException {
+        return _serviceContext.GetAll(id);
     }
 
     public Task FindById(int id) throws SQLException {
