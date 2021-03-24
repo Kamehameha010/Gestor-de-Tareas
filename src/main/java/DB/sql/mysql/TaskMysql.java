@@ -9,7 +9,7 @@ import DB.IConnection;
 import model.Task;
 import services.ICrudServices;
 
-public class TaskMysql implements ICrudServices<Task, Task> {
+public class TaskMysql implements ICrudServices<Task> {
 
     private final String INSERT = "INSERT INTO TASKS VALUES(null,?,?,?,?,?)";
     private final String UPDATE = "UPDATE TASKS SET taskname=?, description=?, date=?,isCompleted=? WHERE id_task=?";
@@ -25,7 +25,6 @@ public class TaskMysql implements ICrudServices<Task, Task> {
 
     @Override
     public void Insert(Task obj) throws SQLException {
-
         var conn = mysql.connect();
         var stmp = conn.prepareStatement(INSERT);
         stmp.setString(1, obj.getTaskName());
@@ -44,7 +43,6 @@ public class TaskMysql implements ICrudServices<Task, Task> {
 
     @Override
     public void Edit(Task obj) throws SQLException {
-        System.out.println("Mysql-->" + obj);
         var conn = mysql.connect();
         var stmp = conn.prepareStatement(UPDATE);
         stmp.setString(1, obj.getTaskName());

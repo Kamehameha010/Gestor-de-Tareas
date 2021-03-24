@@ -11,7 +11,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -31,8 +30,6 @@ public class TaskView extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final int INSERT = 0;
-	private static final int EDIT = 1;
 	private JTextField txtId;
 	private JTextField txtName;
 	private JTextField txtDescription;
@@ -45,7 +42,6 @@ public class TaskView extends JFrame {
 
 	public TaskView(Task task, Actions action) {
 		m_task = task;
-		System.out.println("taskview---" + m_task);
 		m_action = action;
 		isTextValidity = new InputText();
 		controller = new TaskController();
@@ -120,7 +116,7 @@ public class TaskView extends JFrame {
 		getContentPane().add(lblIsCompleted);
 
 		JComboBox<TaskStatus> cbStatus = new JComboBox<>();
-		cbStatus.setModel(new DefaultComboBoxModel(TaskStatus.values()));
+		cbStatus.setModel(new DefaultComboBoxModel<>(TaskStatus.values()));
 		cbStatus.setBounds(31, 278, 179, 23);
 		cbStatus.setSelectedIndex(m_task != null ? m_task.getTaskIsCompleted().getValue() : 0);
 		getContentPane().add(cbStatus);
@@ -171,7 +167,7 @@ public class TaskView extends JFrame {
 		return comp != null ? comp.getDate().getTime() : null;
 	}
 
-	private TaskStatus getStatus(JComboBox comp) {
+	private TaskStatus getStatus(JComboBox<TaskStatus> comp) {
 		return TaskStatus.valueOf(comp.getSelectedIndex());
 	}
 }

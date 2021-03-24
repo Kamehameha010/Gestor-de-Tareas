@@ -5,7 +5,7 @@ import java.util.List;
 
 import model.Identity;
 
-public interface ICrudServices<T extends Identity, U> {
+public interface ICrudServices<T extends Identity> {
 
     void Insert(T obj) throws SQLException;
 
@@ -13,8 +13,8 @@ public interface ICrudServices<T extends Identity, U> {
 
     void Delete(int id) throws SQLException;
 
-    U Find(int id) throws SQLException;
+    T Find(int id) throws SQLException;
 
-    List<U> GetAll(int id) throws SQLException;
+    List<T> GetAll(int id) throws SQLException;
 
 }

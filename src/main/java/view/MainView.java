@@ -14,7 +14,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import model.Actions;
 import model.User;
 
 public class MainView extends JFrame {

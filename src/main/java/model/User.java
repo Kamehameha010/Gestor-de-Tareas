@@ -51,7 +51,6 @@ public class User extends Identity {
         try {
             this.password = EncryptService.Encrypt(password);
         } catch (NoSuchAlgorithmException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

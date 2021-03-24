@@ -11,7 +11,7 @@ import services.ICrudServices;
 public class TaskController  {
 
 
-    private ICrudServices<Task, Task> _serviceContext;
+    private ICrudServices<Task> _serviceContext;
 
     public TaskController(){
         

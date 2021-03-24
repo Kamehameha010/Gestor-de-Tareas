@@ -1,12 +1,14 @@
 package model;
 
+import org.bson.codecs.pojo.annotations.BsonProperty;
+
 public class Task extends Identity {
     private String taskName;
     private String taskDescription;
     private long taskDate;
     private TaskStatus taskIsCompleted;
+    @BsonProperty("id_user")
     private int idUser;
-    private int id;
 
     public Task() {
 

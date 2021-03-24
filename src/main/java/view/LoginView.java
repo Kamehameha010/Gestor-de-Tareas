@@ -3,6 +3,9 @@ package view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Properties;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,7 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import model.viewmodel.UserViewModel;
-import services.security.AuthService;
+import services.security.AuthServiceMysql;
+import services.security.IAuthService;
 import view.fieldValidation.InputText;
 
 public class LoginView extends JFrame {
@@ -23,11 +27,10 @@ public class LoginView extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	
 	private JPanel contentPane;
 	private JTextField txtUser;
 	private JPasswordField txtPasword;
-	private AuthService auth;
+	private IAuthService auth;
 	private InputText isTextValidity;
 
 	private UserView signUp = null;
@@ -38,6 +41,7 @@ public class LoginView extends JFrame {
 
 	public LoginView() {
 		isTextValidity = new InputText();
+
 		initComponents();
 	}
 
@@ -84,12 +88,12 @@ public class LoginView extends JFrame {
 
 				var user = new UserViewModel(txtUser.getText().trim(), new String(txtPasword.getPassword()).trim());
 
-				auth = new AuthService();
+				auth = new AuthServiceMysql();
 
 				var result = auth.isUserValid(user);
 
 				if (result != null) {
-					System.out.println(result);
+
 					MainView mainWindow = new MainView(result);
 					mainWindow.setVisible(true);
 					dispose();
@@ -112,7 +116,14 @@ public class LoginView extends JFrame {
 			public void actionPerformed(ActionEvent evt) {
 
 				if (signUp == null) {
-					
+
+					var prop = new Properties();
+					prop.setProperty("key", "value");
+					try {
+						prop.store(new FileWriter("file.propieties"), "Propiedades");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 					signUp = new UserView();
 					signUp.setVisible(true);
 					dispose();

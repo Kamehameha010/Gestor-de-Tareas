@@ -9,7 +9,7 @@ import DB.sql.mysql.ConnectionMysql;
 import model.User;
 import model.viewmodel.UserViewModel;
 
-public class AuthService implements IAuthService {
+public class AuthServiceMysql implements IAuthService {
 
     IConnection<Connection> db = new ConnectionMysql();
     private final String FIND_USER = "Select * FROM USERS WHERE username=? and password=?";

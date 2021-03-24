@@ -9,7 +9,7 @@ import DB.IConnection;
 import model.User;
 import services.ICrudServices;
 
-public class UserMysql implements ICrudServices<User, User> {
+public class UserMysql implements ICrudServices<User> {
 
     private IConnection<Connection> mysql;
 

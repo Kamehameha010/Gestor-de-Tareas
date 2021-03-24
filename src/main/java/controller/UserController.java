@@ -8,7 +8,7 @@ import services.ICrudServices;
 
 public class UserController {
 
-    private ICrudServices<User, User> _serviceContext;
+    private ICrudServices<User> _serviceContext;
 
     public UserController() throws SQLException {
         _serviceContext = new UserMysql();

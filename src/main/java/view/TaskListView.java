@@ -20,6 +20,10 @@ import model.Task;
 import view.customer.TaskTable;
 
 public class TaskListView extends JInternalFrame {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTable table;
 	private TaskTable taskTableModel;
 	private TaskController controller;
@@ -78,6 +82,7 @@ public class TaskListView extends JInternalFrame {
 					var form = new TaskView(task, Actions.EDIT);
 					form.toFront();
 					form.setVisible(true);
+					loadTable();
 				} catch (Exception ex) {
 					JOptionPane.showMessageDialog(null, "Datos erroneos");
 				}
